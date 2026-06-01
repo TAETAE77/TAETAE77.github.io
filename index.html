@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>김태현 — Robotics & AI Researcher</title>
+  <title>Kim Taehyeon — Robotics & AI Researcher</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
@@ -81,6 +81,53 @@
     @keyframes pulse-ring {
       0%, 100% { transform: scale(1); opacity: 0.5; }
       50% { transform: scale(1.05); opacity: 0.15; }
+    }
+
+
+    /* ── Publications ── */
+    .pub-category { margin-bottom: 1.5rem; }
+    .pub-cat-label {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--blue2); letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .pub-divider { height: 1px; background: var(--border); margin: 2.5rem 0; }
+    .pub-item {
+      display: grid; grid-template-columns: 120px 1fr;
+      gap: 2rem; padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .pub-item:first-of-type { border-top: 1px solid var(--border); }
+    .pub-left {}
+    .pub-year { font-family: var(--mono); font-size: 0.72rem; color: var(--blue2); letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+    .pub-type { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .pub-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.3rem; }
+    .pub-title-en { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-bottom: 0.5rem; letter-spacing: 0.01em; }
+    .pub-authors { font-family: var(--mono); font-size: 0.72rem; color: var(--mid); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
+    .pub-venue { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 0.75rem; }
+    .pub-links { display: flex; gap: 1rem; }
+    .pub-me { color: var(--blue3); font-weight: 500; border-bottom: 1px solid var(--blue2); padding-bottom: 1px; }
+    .pub-link {
+      font-family: var(--mono); font-size: 0.65rem; color: var(--blue3);
+      text-decoration: none; letter-spacing: 0.08em;
+      border: 1px solid var(--border2); padding: 0.2rem 0.6rem;
+      transition: background 0.2s;
+    }
+    .pub-link:hover { background: rgba(59,130,246,0.08); }
+
+
+    /* ── Hero Social Icons ── */
+    .hero-social-row {
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .hero-social-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      border: 1px solid var(--border); color: var(--muted);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .hero-social-link:hover {
+      border-color: var(--blue2); color: var(--blue3);
     }
 
     /* ── Nav ── */
@@ -396,6 +443,30 @@
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--blue1); border-radius: 2px; }
+
+    /* ── Lang Toggle ── */
+    .lang-toggle {
+      display: flex; align-items: center; gap: 0;
+      border: 1px solid var(--border); border-radius: 2px; overflow: hidden;
+    }
+    .lang-btn {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em;
+      padding: 0.35rem 0.75rem; cursor: pointer; border: none; background: transparent;
+      color: var(--muted); transition: all 0.15s;
+    }
+    .lang-btn.active { background: var(--blue1); color: #fff; }
+    .lang-btn:hover:not(.active) { color: var(--text); }
+    /* hide all lang spans by default */
+    .ko, .en { display: none; }
+
+    /* Korean mode */
+    [data-lang="ko"] .ko { display: revert; }
+    [data-lang="ko"] .en { display: none !important; }
+
+    /* English mode */
+    [data-lang="en"] .en { display: revert; }
+    [data-lang="en"] .ko { display: none !important; }
+
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
 </head>
@@ -403,14 +474,18 @@
 
   <nav>
     <a href="#hero" class="nav-logo">taehyun.kim</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ko')">KR</button>
+    </div>
     <ul class="nav-links">
-      <li><a href="#about">about</a></li>
-      <li><a href="#research">research</a></li>
-      <li><a href="#exp-section">experience</a></li>
-      <li><a href="#projects">projects</a></li>
-      <li><a href="#skills">skills</a></li>
-      <li><a href="#awards">awards</a></li>
-      <li><a href="#contact">contact</a></li>
+      <li><a href="#about"><span class="en">about</span><span class="ko">소개</span></a></li>
+      <li><a href="#research"><span class="en">research</span><span class="ko">연구분야</span></a></li>
+      <li><a href="#exp-section"><span class="en">experience</span><span class="ko">연구경험</span></a></li>
+      <li><a href="#projects"><span class="en">projects</span><span class="ko">프로젝트</span></a></li>
+      <li><a href="#publications"><span class="en">publications</span><span class="ko">논문</span></a></li>
+      <li><a href="#skills"><span class="en">skills</span><span class="ko">기술</span></a></li>
+      <li><a href="#awards"><span class="en">awards</span><span class="ko">수상</span></a></li>
     </ul>
   </nav>
 
@@ -422,15 +497,13 @@
     <div class="hero-intro fi fi-d1">
       <div class="hero-avatar"><span>TAETAE</span></div>
       <div class="hero-name-wrap">
-        <h1 class="hero-name">김태현</h1>
-        <p class="hero-name-en">Kim Taehyeon</p>
+        <h1 class="hero-name"><span class="ko">김태현</span><span class="en">Taehyeon Kim</span></h1>
+        
       </div>
     </div>
-    <p class="hero-tagline fi fi-d2">"Building Intelligent Robotics with AI"</p>
+    <p class="hero-tagline fi fi-d2"><span class="en">"Building Intelligent Robotics with AI"</span><span class="ko">"AI로 만드는 지능형 로보틱스"</span></p>
     <p class="hero-desc fi fi-d2">
-      전자공학을 기반으로 자율주행, 로보틱스, Computer Vision,
-      Vision-Language-Action(VLA) 연구를 수행하고 있습니다.
-      지능형 로봇과 AI 기반 자율 시스템 개발에 관심을 가지고 있습니다.
+      <span class="en">Researching autonomous driving, robotics, computer vision, and Vision-Language-Action (VLA) based on electronic engineering. Interested in developing intelligent robots and AI-based autonomous systems.</span><span class="ko">전자공학을 기반으로 자율주행, 로보틱스, Computer Vision, Vision-Language-Action(VLA) 연구를 수행하고 있습니다. 지능형 로봇과 AI 기반 자율 시스템 개발에 관심을 가지고 있습니다.</span>
     </p>
     <div class="hero-tags fi fi-d2">
       <span class="hero-tag">Vision-Language-Action</span>
@@ -440,9 +513,9 @@
       <span class="hero-tag">ROS 2</span>
     </div>
     <div class="hero-bottom fi fi-d3">
-      <a href="#research" class="btn btn-primary">Research →</a>
-      <a href="#contact" class="btn btn-ghost">Contact</a>
-      <span class="hero-affil">국민대학교 · ARC Lab (서형태 교수)</span>
+      <a href="#research" class="btn btn-primary"><span class="en">Research →</span><span class="ko">연구 보기 →</span></a>
+      <a href="#contact" class="btn btn-ghost"><span class="en">Contact</span><span class="ko">연락하기</span></a>
+      <span class="hero-affil"><span class="ko">국민대학교 전자공학부 · ARC Lab. (서형태 교수)</span><span class="en">Kookmin Univ. Dept. of Electronic Eng. · ARC Lab. (Prof. Seo)</span></span>
     </div>
   </section>
 
@@ -450,7 +523,7 @@
   <section id="about">
     <div class="s-header fi">
       <div>
-        <div class="s-label">001 — About Me</div>
+        <div class="s-label">001 — <span class="en">About Me</span><span class="ko">소개</span></div>
         
       </div>
     </div>
@@ -465,18 +538,13 @@
         </div>
       </div>
       <div class="fi fi-d1">
-        <div class="about-uni">국민대학교 전자공학부</div>
-        <div class="about-major">전자시스템공학전공 · 2021 ~ 현재</div>
+        <div class="about-uni"><span class="en">Kookmin University, Dept. of Electronic Engineering</span><span class="ko">국민대학교 전자공학부</span></div>
+        <div class="about-major"><span class="en">Electronic Systems Engineering · 2021 ~ Present</span><span class="ko">전자시스템공학전공 · 2021 ~ 현재</span></div>
         <p class="about-body">
-          전자공학을 기반으로 자율주행, 로보틱스, Computer Vision,
-          Vision-Language-Action(VLA) 연구를 수행하고 있습니다.
-          현재 ARC Lab.(서형태 교수) 학부연구생으로 활동하며,
-          지능형 로봇과 AI 기반 자율 시스템 개발에 관심을 가지고 있습니다.
+          <span class="ko">전자공학을 기반으로 자율주행, 로보틱스, Computer Vision, Vision-Language-Action(VLA) 연구를 수행하고 있습니다. 현재 ARC Lab.(서형태 교수) 학부연구생으로 활동하며, 지능형 로봇과 AI 기반 자율 시스템 개발에 관심을 가지고 있습니다.</span><span class="en">Researching autonomous driving, robotics, computer vision, and VLA based on electronic engineering. Currently an undergraduate researcher at ARC Lab (Prof. Seo), with a focus on intelligent robot and AI-based autonomous systems.</span>
         </p>
         <div class="about-goal">
-          <strong>Career Goal —</strong>
-          전자공학 기반의 로보틱스 및 AI 연구를 통해 실제 환경에서 동작하는
-          지능형 자율 시스템을 개발하는 연구자가 되는 것을 목표로 합니다.
+          <strong>Career Goal —</strong> <span class="en">My goal is to become a researcher who develops intelligent autonomous systems that operate in real-world environments through robotics and AI research based on electronic engineering.</span><span class="ko">전자공학 기반의 로보틱스 및 AI 연구를 통해 실제 환경에서 동작하는 지능형 자율 시스템을 개발하는 연구자가 되는 것을 목표로 합니다.</span>
         </div>
         <div class="interest-tags">
           <span class="interest-tag">VLA</span>
@@ -493,7 +561,7 @@
   <section id="research">
     <div class="s-header fi">
       <div>
-        <div class="s-label">002 — Research Interests</div>
+        <div class="s-label">002 — <span class="en">Research Interests</span><span class="ko">연구 분야</span></div>
         
       </div>
     </div>
@@ -578,19 +646,19 @@
   <section id="exp-section">
     <div class="s-header fi">
       <div>
-        <div class="s-label">003 — Research Experience</div>
+        <div class="s-label">003 — <span class="en">Research Experience</span><span class="ko">연구 경험</span></div>
       </div>
     </div>
 
     <div class="exp-item fi">
       <div class="exp-left">
         <div class="exp-period">2026 — Present</div>
-        <div class="exp-type">Current Lab</div>
+        <div class="exp-type"><span class="en">Current Lab</span><span class="ko">현재 연구실</span></div>
       </div>
       <div>
         <div class="exp-role">Undergraduate Researcher</div>
         <div class="exp-org">ARC Lab. — Autonomous Robotics and Control Laboratory</div>
-        <div class="exp-org-sub">지도교수: 서형태 · 국민대학교 전자공학부 · <a href="https://sites.google.com/view/htseo" target="_blank" rel="noopener" style="color:var(--blue3);text-decoration:none;">sites.google.com/view/htseo ↗</a></div>
+        <div class="exp-org-sub"><span class="ko">지도교수: 서형태 · 국민대학교 전자공학부 · <a href="https://sites.google.com/view/htseo" target="_blank" rel="noopener" style="color:var(--blue3);text-decoration:none;">sites.google.com/view/htseo ↗</a></span><span class="en">Advisor: Prof. Hyungtae Seo · Kookmin Univ. · <a href="https://sites.google.com/view/htseo" target="_blank" rel="noopener" style="color:var(--blue3);text-decoration:none;">sites.google.com/view/htseo ↗</a></span></div>
         <div class="exp-tags">
           <span class="exp-tag">VLA</span>
           <span class="exp-tag">Embodied AI</span>
@@ -599,10 +667,12 @@
           <span class="exp-tag">Robust Control</span>
         </div>
         <ul class="exp-items-list">
-          <li>스마트팜 로봇 시스템 연구</li>
-          <li>TurtleBot3 기반 자율주행 시스템 개발</li>
-          <li>Vision-Language-Action Framework 연구</li>
-          <li>Robot Policy Learning 연구</li>
+          <li><span class="ko">WebXR VR Teleoperation 기반 로봇 조작 데이터 수집 파이프라인 구축</span><span class="en">WebXR VR Teleoperation-based robot manipulation data collection pipeline</span></li>
+          <li><span class="ko">ACT(Action Chunking with Transformers) 기반 모방학습 정책 학습 및 평가</span><span class="en">ACT-based imitation learning policy training and evaluation</span></li>
+          <li><span class="ko">감쇠-진자 모델 근사를 활용한 Dynamics-Aware VLA 제어 연구</span><span class="en">Dynamics-aware VLA control via damped pendulum model approximation</span></li>
+          <li><span class="ko">경량 VLA(SmolVLA) 기반 스마트팜 자율 운용 시스템 설계</span><span class="en">Lightweight VLA (SmolVLA)-based autonomous smart farm system design</span></li>
+          <li><span class="ko">TurtleBot3 Waffle + Jetson Orin 기반 자율주행 실험 플랫폼 구축</span><span class="en">TurtleBot3 Waffle + Jetson Orin autonomous driving experimental platform</span></li>
+          <li><span class="ko">NVIDIA Isaac Sim 기반 Sim-to-Real 로봇 정책 검증</span><span class="en">Sim-to-Real robot policy validation via NVIDIA Isaac Sim</span></li>
         </ul>
       </div>
     </div>
@@ -610,23 +680,23 @@
     <div class="exp-item fi">
       <div class="exp-left">
         <div class="exp-period">2024 — 2025</div>
-        <div class="exp-type">Previous Lab</div>
+        <div class="exp-type"><span class="en">Previous Lab</span><span class="ko">이전 연구실</span></div>
       </div>
       <div>
         <div class="exp-role">Undergraduate Researcher</div>
         <div class="exp-org">WicomAI Lab. — Wireless Communications and Artificial Intelligence Lab</div>
-        <div class="exp-org-sub">지도교수: 장영민 · 국민대학교 전자공학부 · <a href="https://wireless.kookmin.ac.kr/" target="_blank" rel="noopener" style="color:var(--blue3);text-decoration:none;">wireless.kookmin.ac.kr ↗</a></div>
+        <div class="exp-org-sub"><span class="ko">지도교수: 장영민 · 국민대학교 전자공학부 · <a href="https://wireless.kookmin.ac.kr/" target="_blank" rel="noopener" style="color:var(--blue3);text-decoration:none;">wireless.kookmin.ac.kr ↗</a></span><span class="en">Advisor: Prof. Yeong Min Jang · Kookmin Univ. · <a href="https://wireless.kookmin.ac.kr/" target="_blank" rel="noopener" style="color:var(--blue3);text-decoration:none;">wireless.kookmin.ac.kr ↗</a></span></div>
         <div class="exp-tags">
           <span class="exp-tag">OCC</span>
           <span class="exp-tag">Optical Camera Communication</span>
           <span class="exp-tag">Optical Wireless Communications</span>
-          <span class="exp-tag">국방기술특화</span>
+          <span class="exp-tag"><span class="ko">국방기술특화</span><span class="en">Defense Tech</span></span>
           <span class="exp-tag">V2X</span>
         </div>
         <ul class="exp-items-list">
-          <li>OCC (Optical Camera Communication) 기술 연구</li>
-          <li>국방기술특화연구실 (Defense Technology Specialized Research Lab.) 소속</li>
-          <li>Optical Wireless Communications 기반 V2X 연구</li>
+          <li><span class="ko">OCC (Optical Camera Communication) 기술 연구</span><span class="en">OCC (Optical Camera Communication) technology research</span></li>
+          <li><span class="ko">국방기술특화연구실 (Defense Technology Specialized Research Lab.) 소속</span><span class="en">Affiliated with Defense Technology Specialized Research Lab.</span></li>
+          <li><span class="ko">Optical Wireless Communications 기반 V2X 연구</span><span class="en">V2X research based on Optical Wireless Communications</span></li>
         </ul>
       </div>
     </div>
@@ -636,16 +706,16 @@
   <section id="projects">
     <div class="s-header fi">
       <div>
-        <div class="s-label">004 — Projects</div>
+        <div class="s-label">004 — <span class="en">Projects</span><span class="ko">프로젝트</span></div>
       </div>
     </div>
 
     <div class="project-item fi">
       <div>
         <div class="proj-num">01</div>
-        <h3 class="proj-title">WebXR 기반 VR Teleoperation<br/>및 ACT 모방학습</h3>
+        <h3 class="proj-title"><span class="ko">WebXR 기반 VR Teleoperation<br/>및 ACT 모방학습</span><span class="en">WebXR-based VR Teleoperation<br/>& ACT Imitation Learning</span></h3>
         <div class="proj-subtitle">Research Project · ARC Lab. · 2026</div>
-        <p class="proj-desc">VR 원격조작 데이터를 수집하고 ACT 기반 모방학습 모델을 적용해 로봇 조작 정책을 학습한 프로젝트</p>
+        <p class="proj-desc"><span class="ko">VR 원격조작 데이터를 수집하고 ACT 기반 모방학습 모델을 적용해 로봇 조작 정책을 학습한 프로젝트</span><span class="en">A project collecting VR teleoperation data and training robot manipulation policies via ACT-based imitation learning.</span></p>
         <div class="proj-stack">
           <span class="proj-tech">WebXR</span>
           <span class="proj-tech">Isaac Sim</span>
@@ -656,11 +726,11 @@
       </div>
       <div class="proj-right">
         <ul class="proj-features">
-          <li>VR 기반 원격조작 환경 구축</li>
-          <li>Expert trajectory dataset 구축</li>
-          <li>Behavior Cloning 기반 정책 학습</li>
-          <li>ACT 기반 모방학습 구조 설계</li>
-          <li>로봇 조작 정책 비교 실험</li>
+          <li><span class="ko">VR 기반 원격조작 환경 구축</span><span class="en">VR-based teleoperation environment</span></li>
+          <li><span class="ko">Expert trajectory dataset 구축</span><span class="en">Expert trajectory dataset construction</span></li>
+          <li><span class="ko">Behavior Cloning 기반 정책 학습</span><span class="en">Behavior Cloning policy learning</span></li>
+          <li><span class="ko">ACT 기반 모방학습 구조 설계</span><span class="en">ACT-based imitation learning architecture</span></li>
+          <li><span class="ko">로봇 조작 정책 비교 실험</span><span class="en">Robot manipulation policy comparison</span></li>
         </ul>
       </div>
     </div>
@@ -668,9 +738,9 @@
     <div class="project-item fi">
       <div>
         <div class="proj-num">02</div>
-        <h3 class="proj-title">TurtleBot3 Waffle<br/>자율주행 로봇 플랫폼 구축</h3>
+        <h3 class="proj-title"><span class="ko">TurtleBot3 Waffle<br/>자율주행 로봇 플랫폼 구축</span><span class="en">TurtleBot3 Waffle<br/>Autonomous Robot Platform</span></h3>
         <div class="proj-subtitle">Research Project · ARC Lab. · 2026</div>
-        <p class="proj-desc">TurtleBot3 Waffle을 기반으로 센서, 주행 제어, 매핑, 내비게이션을 통합한 로봇 실험 플랫폼 구축 프로젝트</p>
+        <p class="proj-desc"><span class="ko">TurtleBot3 Waffle을 기반으로 센서, 주행 제어, 매핑, 내비게이션을 통합한 로봇 실험 플랫폼 구축 프로젝트</span><span class="en">An integrated robot experiment platform combining sensors, motion control, mapping, and navigation on TurtleBot3 Waffle.</span></p>
         <div class="proj-stack">
           <span class="proj-tech">ROS 2 Humble</span>
           <span class="proj-tech">TurtleBot3</span>
@@ -682,11 +752,11 @@
       </div>
       <div class="proj-right">
         <ul class="proj-features">
-          <li>LiDAR 기반 Mapping & Navigation</li>
-          <li>RealSense RGB-D Camera 연동</li>
-          <li>OpenCV 기반 카메라 자율주행 확장</li>
-          <li>OpenManipulator / SO-ARM 연동</li>
-          <li>실험 플랫폼 통합 구축</li>
+          <li><span class="ko">LiDAR 기반 Mapping & Navigation</span><span class="en">LiDAR-based Mapping & Navigation</span></li>
+          <li><span class="ko">RealSense RGB-D Camera 연동</span><span class="en">RealSense RGB-D Camera integration</span></li>
+          <li><span class="ko">OpenCV 기반 카메라 자율주행 확장</span><span class="en">OpenCV-based camera autonomous driving extension</span></li>
+          <li><span class="ko">OpenManipulator / SO-ARM 연동</span><span class="en">OpenManipulator / SO-ARM integration</span></li>
+          <li><span class="ko">실험 플랫폼 통합 구축</span><span class="en">Integrated experiment platform setup</span></li>
         </ul>
       </div>
     </div>
@@ -694,9 +764,9 @@
     <div class="project-item fi">
       <div>
         <div class="proj-num">03</div>
-        <h3 class="proj-title">MATLAB/Simulink 기반<br/>LKAS 구현</h3>
+        <h3 class="proj-title"><span class="ko">MATLAB/Simulink 기반<br/>LKAS 구현</span><span class="en">MATLAB/Simulink-based<br/>LKAS Implementation</span></h3>
         <div class="proj-subtitle">Individual Project · 2025</div>
-        <p class="proj-desc">카메라 영상에서 차선을 검출하고 중심 오차를 기반으로 조향각을 계산하여 차선 유지 보조 시스템을 구현한 프로젝트</p>
+        <p class="proj-desc"><span class="ko">카메라 영상에서 차선을 검출하고 중심 오차를 기반으로 조향각을 계산하여 차선 유지 보조 시스템을 구현한 프로젝트</span><span class="en">A lane-keeping assist system detecting lanes from camera images and computing steering angles based on center offset.</span></p>
         <div class="proj-stack">
           <span class="proj-tech">MATLAB</span>
           <span class="proj-tech">Simulink</span>
@@ -706,11 +776,11 @@
       </div>
       <div class="proj-right">
         <ul class="proj-features">
-          <li>Camera 영상 기반 차선 검출</li>
-          <li>ROI 설정 및 차선 후보 영역 추출</li>
-          <li>Sliding Window 기반 차선 추종</li>
-          <li>차선 중심 오차 기반 조향각 계산</li>
-          <li>곡선 구간 진입 및 탈출 안정화</li>
+          <li><span class="ko">Camera 영상 기반 차선 검출</span><span class="en">Camera image-based lane detection</span></li>
+          <li><span class="ko">ROI 설정 및 차선 후보 영역 추출</span><span class="en">ROI setting & lane candidate extraction</span></li>
+          <li><span class="ko">Sliding Window 기반 차선 추종</span><span class="en">Sliding Window-based lane tracking</span></li>
+          <li><span class="ko">차선 중심 오차 기반 조향각 계산</span><span class="en">Steering angle calculation from lane center error</span></li>
+          <li><span class="ko">곡선 구간 진입 및 탈출 안정화</span><span class="en">Curve entry & exit stabilization</span></li>
         </ul>
       </div>
     </div>
@@ -718,9 +788,9 @@
     <div class="project-item fi">
       <div>
         <div class="proj-num">04</div>
-        <h3 class="proj-title">PreScan/Simulink 및 Infineon AURIX<br/>기반 자율주행 차량 제어</h3>
+        <h3 class="proj-title"><span class="ko">PreScan/Simulink 및 Infineon AURIX<br/>기반 자율주행 차량 제어</span><span class="en">PreScan/Simulink & Infineon AURIX<br/>Autonomous Vehicle Control</span></h3>
         <div class="proj-subtitle">Team Project · 2025</div>
-        <p class="proj-desc">PreScan과 Simulink에서 구현한 자율주행 제어 알고리즘을 Infineon AURIX Board에 탑재하여 임베디드 차량 제어 구조를 검증한 프로젝트</p>
+        <p class="proj-desc"><span class="ko">PreScan과 Simulink에서 구현한 자율주행 제어 알고리즘을 Infineon AURIX Board에 탑재하여 임베디드 차량 제어 구조를 검증한 프로젝트</span><span class="en">A project deploying autonomous driving algorithms implemented in PreScan/Simulink onto an Infineon AURIX Board to validate embedded vehicle control.</span></p>
         <div class="proj-stack">
           <span class="proj-tech">MATLAB/Simulink</span>
           <span class="proj-tech">PreScan</span>
@@ -731,11 +801,11 @@
       </div>
       <div class="proj-right">
         <ul class="proj-features">
-          <li>Camera 기반 LKAS 구현</li>
-          <li>AEB 구현</li>
-          <li>신호등 인식 기반 정지 제어</li>
+          <li><span class="ko">Camera 기반 LKAS 구현</span><span class="en">Camera-based LKAS implementation</span></li>
+          <li><span class="ko">AEB 구현</span><span class="en">AEB implementation</span></li>
+          <li><span class="ko">신호등 인식 기반 정지 제어</span><span class="en">Traffic light detection-based stop control</span></li>
           <li>Dual Camera Fusion</li>
-          <li>Steering / Throttle / Brake 제어</li>
+          <li><span class="ko">Steering / Throttle / Brake 제어</span><span class="en">Steering / Throttle / Brake control</span></li>
         </ul>
       </div>
     </div>
@@ -743,9 +813,9 @@
     <div class="project-item fi">
       <div>
         <div class="proj-num">05</div>
-        <h3 class="proj-title">UWB 기반 실내 자율주행<br/>물류 로봇</h3>
+        <h3 class="proj-title"><span class="ko">UWB 기반 실내 자율주행<br/>물류 로봇</span><span class="en">UWB-based Indoor Autonomous<br/>Logistics Robot</span></h3>
         <div class="proj-subtitle">Engineering Design Project · 2024</div>
-        <p class="proj-desc">UWB 위치추정과 초음파 센서를 활용해 실내에서 자율적으로 이동하는 물류 로봇을 설계한 프로젝트</p>
+        <p class="proj-desc"><span class="ko">UWB 위치추정과 초음파 센서를 활용해 실내에서 자율적으로 이동하는 물류 로봇을 설계한 프로젝트</span><span class="en">A logistics robot designed for autonomous indoor navigation using UWB positioning and ultrasonic sensors.</span></p>
         <div class="proj-stack">
           <span class="proj-tech">Arduino</span>
           <span class="proj-tech">UWB</span>
@@ -756,22 +826,95 @@
       </div>
       <div class="proj-right">
         <ul class="proj-features">
-          <li>UWB 기반 실내 위치 추정</li>
-          <li>초음파 센서 기반 장애물 감지</li>
-          <li>BFS 기반 경로 탐색</li>
-          <li>Arduino 기반 모터 제어</li>
-          <li>저비용·저전력 실내 물류 로봇 구현</li>
+          <li><span class="ko">UWB 기반 실내 위치 추정</span><span class="en">UWB-based indoor localization</span></li>
+          <li><span class="ko">초음파 센서 기반 장애물 감지</span><span class="en">Ultrasonic sensor obstacle detection</span></li>
+          <li><span class="ko">BFS 기반 경로 탐색</span><span class="en">BFS-based path planning</span></li>
+          <li><span class="ko">Arduino 기반 모터 제어</span><span class="en">Arduino-based motor control</span></li>
+          <li><span class="ko">저비용·저전력 실내 물류 로봇 구현</span><span class="en">Low-cost, low-power indoor logistics robot</span></li>
         </ul>
       </div>
     </div>
 
   </section>
 
-    <!-- Skills -->
+  
+<!-- Publications -->
+  <section id="publications">
+    <div class="s-header fi">
+      <div>
+        <div class="s-label">005 — <span class="en">Publications</span><span class="ko">논문</span></div>
+      </div>
+    </div>
+
+    <!-- 학술지 -->
+    <div class="pub-category fi">
+      <div class="pub-cat-label"><span class="en">Journal Articles</span><span class="ko">학술지 논문</span></div>
+    </div>
+
+    <div class="pub-item fi">
+      <div class="pub-left">
+        <div class="pub-year">2025</div>
+        <div class="pub-type">Journal</div>
+      </div>
+      <div class="pub-right">
+        <div class="pub-title">Performance Measurement of a Real-Time Optical Camera Communication System on an Edge Server</div>
+        <div class="pub-title-en"><span class="ko">에지 서버 기반 실시간 광학 카메라 통신 시스템 성능 측정</span><span class="en">Performance Measurement of a Real-Time OCC System on an Edge Server</span></div>
+        <div class="pub-authors"><span class="pub-me">Tae Hyun Kim</span>, Yeong Min Jang</div>
+        <div class="pub-venue">The Journal of Korean Institute of Communications and Information Sciences, Vol.50, No.07, pp.1011–1020, Jul. 2025</div>
+        <div class="pub-venue" style="margin-top:0.3rem; font-size:0.75rem;">DOI: 10.7840/kics.2025.50.7.1011</div>
+        <div class="pub-links">
+          <a href="https://doi.org/10.7840/kics.2025.50.7.1011" target="_blank" rel="noopener" class="pub-link">DOI ↗</a>
+          <a href="#" class="pub-link">PDF ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-divider fi"></div>
+
+    <!-- 학술대회 -->
+    <div class="pub-category fi">
+      <div class="pub-cat-label"><span class="en">Conference Papers</span><span class="ko">학술대회 논문</span></div>
+    </div>
+
+    <div class="pub-item fi">
+      <div class="pub-left">
+        <div class="pub-year">2026</div>
+        <div class="pub-type">Conference</div>
+      </div>
+      <div class="pub-right">
+        <div class="pub-title"><span class="ko">액체 슬로싱 억제를 위한 진자-감쇠 모델 근사 기반 ACT 모방 학습 제어</span><span class="en">Liquid Sloshing Suppression via ACT Imitation Learning with Damped Pendulum Approximation</span></div>
+        <div class="pub-title-en">Liquid Sloshing Suppression via ACT Imitation Learning with Damped Pendulum Approximation</div>
+        <div class="pub-authors">○<span class="pub-me">김태현</span>, 김세범, 이준우, 서형태</div>
+        <div class="pub-venue"><span class="ko">ICROS 2026 · 2026년 7월 1일~3일, 대구 EXCO</span><span class="en">ICROS 2026 · July 1–3, 2026, EXCO Daegu</span></div>
+        <div class="pub-links">
+          <a href="#" class="pub-link">PDF ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item fi">
+      <div class="pub-left">
+        <div class="pub-year">2026</div>
+        <div class="pub-type">Conference</div>
+      </div>
+      <div class="pub-right">
+        <div class="pub-title"><span class="ko">경량 VLA와 저전력 엣지 AI 기반 스마트팜 자율 운용 시스템</span><span class="en">Autonomous Smart Farm System Based on Lightweight VLA and Low-Power Edge AI</span></div>
+        <div class="pub-title-en">Autonomous Smart Farm System Based on Lightweight VLA and Low-Power Edge AI</div>
+        <div class="pub-authors">안정윤, <span class="pub-me">김태현</span>, 김호진, 임현철, 이준혁, 성형민, 주민철</div>
+        <div class="pub-venue"><span class="ko">ICROS 2026 · 2026년 7월 1일~3일, 대구 EXCO</span><span class="en">ICROS 2026 · July 1–3, 2026, EXCO Daegu</span></div>
+        <div class="pub-links">
+          <a href="#" class="pub-link">PDF ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Skills -->
   <section id="skills">
     <div class="s-header fi">
       <div>
-        <div class="s-label">005 — Technical Skills</div>
+        <div class="s-label">005 — <span class="en">Technical Skills</span><span class="ko">기술 스택</span></div>
         
       </div>
     </div>
@@ -814,30 +957,15 @@
   <section id="awards">
     <div class="s-header fi">
       <div>
-        <div class="s-label">006 — Awards & Activities</div>
+        <div class="s-label">006 — <span class="en">Awards & Activities</span><span class="ko">수상 및 활동</span></div>
         
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="fi">
-      <p class="contact-pre">007 — Contact</p>
-      <h2 class="contact-big">Get in<br/><em>Touch</em></h2>
-      <p class="contact-sub">연구 협업, 대학원 관련 문의, 혹은 그냥 안부 인사도 환영합니다.</p>
-      <a href="mailto:ykj8806@kookmin.ac.kr" class="contact-email">ykj8806@kookmin.ac.kr</a>
-      <div class="contact-links">
-        <a href="https://github.com/TAETAE77" target="_blank" rel="noopener" class="contact-link">GitHub ↗</a>
-        <a href="#" class="contact-link">LinkedIn ↗</a>
-        <a href="resume.pdf" download class="contact-link">CV / Resume ↓</a>
       </div>
     </div>
   </section>
 
   <footer>
     <span>© 2025 김태현 (Taehyun Kim) · Kookmin University</span>
-    <span>Robotics & AI Researcher</span>
+    <span><span class="en">Robotics & AI Researcher</span><span class="ko">로보틱스 & AI 연구자</span></span>
   </footer>
 
   <script>
@@ -853,6 +981,20 @@
       secs.forEach(s => { if (scrollY >= s.offsetTop - 140) cur = s.id; });
       links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--blue3)' : ''; });
     }, { passive: true });
+  </script>
+
+  <script>
+    function setLang(lang) {
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang === 'ko' ? 'ko' : 'en');
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang || (btn.textContent.trim() === 'KR' && lang === 'ko') || (btn.textContent.trim() === 'EN' && lang === 'en'));
+      });
+      localStorage.setItem('lang', lang);
+    }
+    // Restore saved preference
+    const saved = localStorage.getItem('lang');
+    if (saved) setLang(saved);
   </script>
 </body>
 </html>
