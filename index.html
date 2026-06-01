@@ -116,17 +116,19 @@
     .pub-link:hover { background: rgba(59,130,246,0.08); }
 
 
-    /* ── Hero Social Icons ── */
-    .hero-social-row {
-      display: flex; align-items: center; gap: 0.5rem;
+    /* ── Hero Badges ── */
+    .hero-badges {
+      display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
     }
-    .hero-social-link {
-      display: flex; align-items: center; justify-content: center;
-      width: 40px; height: 40px;
-      border: 1px solid var(--border); color: var(--muted);
-      text-decoration: none; transition: all 0.2s;
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--border); border-radius: 1px;
+      color: var(--mid); text-decoration: none;
+      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em;
+      transition: all 0.2s; white-space: nowrap;
     }
-    .hero-social-link:hover {
+    .hero-badge:hover {
       border-color: var(--blue2); color: var(--blue3);
     }
 
@@ -513,9 +515,7 @@
       <span class="hero-tag">ROS 2</span>
     </div>
     <div class="hero-bottom fi fi-d3">
-      <a href="#research" class="btn btn-primary"><span class="en">Research →</span><span class="ko">연구 보기 →</span></a>
-      <a href="#contact" class="btn btn-ghost"><span class="en">Contact</span><span class="ko">연락하기</span></a>
-      <span class="hero-affil"><span class="ko">국민대학교 전자공학부 · ARC Lab. (서형태 교수)</span><span class="en">Kookmin Univ. Dept. of Electronic Eng. · ARC Lab. (Prof. Seo)</span></span>
+      <a href="#research" class="btn btn-primary"><span class="en">Research →</span><span class="ko">연구 보기 →</span></a><span class="en">Kookmin Univ. Dept. of Electronic Eng. · ARC Lab. (Prof. Seo)</span></span>
     </div>
   </section>
 
