@@ -91,6 +91,8 @@
     .pub-item { display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem; padding: 1.1rem 0; border-top: 1px solid var(--border); align-items: start; }
     .pub-meta { font-family: var(--mono); font-size: 0.7rem; color: var(--blue3); letter-spacing: 0.04em; }
     .pub-title { font-size: 0.88rem; color: var(--text); font-weight: 500; line-height: 1.5; margin-bottom: 0.25rem; }
+    .tag-label { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 1.25rem; }
+    .tag-label + .skill-tags { margin-top: 0.5rem; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
     .skill-tag { font-family: var(--mono); font-size: 0.68rem; color: var(--blue3); border: 1px solid var(--border2); border-radius: 999px; padding: 0.22rem 0.7rem; letter-spacing: 0.02em; }
     .pub-authors { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.25rem; }
@@ -169,6 +171,16 @@
         <span class="en">Undergraduate in the Dept. of Electronic Engineering at Kookmin University, researching <span class="hl">Vision-Language-Action and robot learning</span> in the <a href="https://sites.google.com/view/htseo" target="_blank" rel="noopener">ARC Lab</a>.</span>
         <span class="ko">국민대학교 전자공학부 학부생으로, <a href="https://sites.google.com/view/htseo" target="_blank" rel="noopener">ARC Lab</a>에서 <span class="hl">Vision-Language-Action과 로봇 학습</span>을 연구하고 있습니다.</span>
       </p>
+      <div class="tag-label"><span class="en">Research Interests</span><span class="ko">관심 분야</span></div>
+      <div class="skill-tags">
+        <span class="skill-tag">Learning-Based Control</span>
+        <span class="skill-tag">Vision-Language-Action</span>
+        <span class="skill-tag">Vision-Based Control</span>
+        <span class="skill-tag">Manipulator</span>
+        <span class="skill-tag">Reinforcement Learning</span>
+      </div>
+
+      <div class="tag-label"><span class="en">Skills</span><span class="ko">보유 기술</span></div>
       <div class="skill-tags">
         <span class="skill-tag">PyTorch</span>
         <span class="skill-tag">Python</span>
